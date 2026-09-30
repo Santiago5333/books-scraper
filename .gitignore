@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.pyc
+
+# Entornos y caches
+.venv/
+.pytest_cache/
+.mypy_cache/
+
+# Salidas regenerables del scraper (se queda data/books.json como muestra)
+data/*
+!data/books.json

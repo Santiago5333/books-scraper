@@ -1,0 +1,40 @@
+site:
+  base_url: "https://books.toscrape.com"
+  catalog_path: "/catalogue/page-{page_num}.html" #pagina 1 = page-1.html
+  book_path: '/catalogue/{slug}' #slug viene del href del libro
+  max_pages: 0
+  request_delay: 1.0 # segundos entre request
+
+selectors:
+  book_container: "article.product_pod"
+  title: "h3 a"
+  price: ".price_color"
+  availability: '.availability'
+  rating: ".star-rating"
+  book_link: "h3 a" #href relativo al detalle
+  next_page: ".next a"
+
+#Pagina de detalle del ibro
+
+  product_table: "table.table-striped tr"
+  upc: "td" #Primer td despues de th="UPC"
+  description: "#product_description + p"
+  category: ".breadcrumb li:nth-child(3) a"
+  image: "#product_gallery img" # @src relativo
+
+http:
+  timeout_connect: 5
+  timeout_read: 15
+  user_agent: "Mozilla/5.0 (X11; Linux x86_64; rv:153.0) Gecko/20100101 Firefox/153.0"
+  max_retries: 3
+  backoff_factor: 1.0
+
+output:
+  default_format: "json"
+  json_path: "data/books.json"
+  csv_path: 'data/books.csv'
+  sqlite_path: "data/books.db"
+  csv_delimiter: ";"
+  images_dir: "data/images"
+
+
